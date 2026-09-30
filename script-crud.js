@@ -4,6 +4,8 @@ const formAdicionarTarefa = document.querySelector(".app__form-add-task")
 
 const textarea = document.querySelector(".app__form-textarea")
 
+const tarefas = []
+
 btnAdicionarTarefa.addEventListener("click", ()=>{
     formAdicionarTarefa.classList.toggle("hidden")
 })
@@ -11,4 +13,9 @@ btnAdicionarTarefa.addEventListener("click", ()=>{
 
 formAdicionarTarefa.addEventListener("submit", (evento)=>{
     evento.preventDefault();
+    const tarefa = {
+        descricao: textarea.value
+    }
+    tarefas.push(tarefa)
+    localStorage.setItem("tarefas", tarefas)
 })
