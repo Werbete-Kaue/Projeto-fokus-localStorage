@@ -20,13 +20,15 @@ function criarElementoTarefa(tarefa){
             <path d="M9 16.1719L19.5938 5.57812L21 6.98438L9 18.9844L3.42188 13.4062L4.82812 12L9 16.1719Z"
                 fill="#01080E"></path>
         </svg>
-    
     `;
 
     const paragrafo = document.createElement("p")
     paragrafo.textContent = tarefa.descricao
+    paragrafo.classList.add("app__section-task-list-item-description")
 
     const button = document.createElement("button")
+    button.classList.add("app_button-edit")
+
     const imgbutton = document.createElement("img")
 
     imgbutton.setAttribute("src", "/imagens/edit.png")
@@ -50,7 +52,11 @@ formAdicionarTarefa.addEventListener("submit", (evento)=>{
         descricao: textarea.value
     }
     tarefas.push(tarefa)
-    localStorage.setItem("tarefas", JSON.stringify(tarefas)) 
+    const elementoTarefa = criarElementoTarefa(tarefa)
+    ulTarefas.append(elementoTarefa)
+    localStorage.setItem("tarefas", JSON.stringify(tarefas))
+    textarea.value = ""
+    formAdicionarTarefa.classList.add("hidden")
 })
 
 tarefas.forEach(tarefa => {
