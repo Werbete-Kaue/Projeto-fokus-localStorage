@@ -6,6 +6,10 @@ const textarea = document.querySelector(".app__form-textarea")
 
 const tarefas = JSON.parse(localStorage.getItem("tarefas")) || []
 
+function atualizarTarefas(){
+    localStorage.setItem("tarefas", JSON.stringify(tarefas))
+}
+
 const ulTarefas = document.querySelector(".app__section-task-list")
 
 function criarElementoTarefa(tarefa){
@@ -32,6 +36,8 @@ function criarElementoTarefa(tarefa){
     button.onclick = ()=>{
         const novaDescricao = prompt("Qual é o novo nome da tarefa?")
         paragrafo.textContent = novaDescricao
+        tarefa.descricao = novaDescricao
+        atualizarTarefas()
     }
 
     const imgbutton = document.createElement("img")
@@ -59,7 +65,7 @@ formAdicionarTarefa.addEventListener("submit", (evento)=>{
     tarefas.push(tarefa)
     const elementoTarefa = criarElementoTarefa(tarefa)
     ulTarefas.append(elementoTarefa)
-    localStorage.setItem("tarefas", JSON.stringify(tarefas))
+    atualizarTarefas()
     textarea.value = ""
     formAdicionarTarefa.classList.add("hidden")
 })
