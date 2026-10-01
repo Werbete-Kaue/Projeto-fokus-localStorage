@@ -29,6 +29,11 @@ function criarElementoTarefa(tarefa){
     const button = document.createElement("button")
     button.classList.add("app_button-edit")
 
+    button.onclick = ()=>{
+        const novaDescricao = prompt("Qual é o novo nome da tarefa?")
+        paragrafo.textContent = novaDescricao
+    }
+
     const imgbutton = document.createElement("img")
 
     imgbutton.setAttribute("src", "/imagens/edit.png")
