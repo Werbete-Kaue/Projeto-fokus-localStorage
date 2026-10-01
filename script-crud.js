@@ -35,9 +35,11 @@ function criarElementoTarefa(tarefa){
 
     button.onclick = ()=>{
         const novaDescricao = prompt("Qual é o novo nome da tarefa?")
-        paragrafo.textContent = novaDescricao
-        tarefa.descricao = novaDescricao
-        atualizarTarefas()
+        if (novaDescricao){
+            paragrafo.textContent = novaDescricao
+            tarefa.descricao = novaDescricao
+            atualizarTarefas()
+        }
     }
 
     const imgbutton = document.createElement("img")
